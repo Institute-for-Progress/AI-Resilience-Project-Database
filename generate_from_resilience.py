@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 """Generate projects-v2.json from resilience-proposals markdown files.
 Preserves all rich content: Problem, Approach, Current State, Uncertainties, Next Steps, Sources.
+Also generates embeddings.json for semantic search.
 """
 import json
 import re
+from datetime import datetime
 from pathlib import Path
 
 SOURCE_DIR = Path('/Users/jonahweinbaum/Desktop/Claude Code/projects/resilience-proposals/interventions-new-new/entries')
 OUTPUT_FILE = Path('/Users/jonahweinbaum/Desktop/Claude Code/projects/ListofListofLists/data/projects-v2.json')
+EMBEDDINGS_FILE = Path('/Users/jonahweinbaum/Desktop/Claude Code/projects/ListofListofLists/data/embeddings.json')
 
-GITHUB_BASE = 'https://github.com/jonahwei19/ListofListofLists/blob/main'
+GITHUB_BASE = 'https://github.com/Institute-for-Progress/AI-Resilience-Project-Database/blob/main'
 
 
 def parse_sources_from_text(text):
@@ -137,6 +140,52 @@ def parse_intervention(filepath):
     }
 
 
+def generate_embeddings(interventions):
+    """Generate embeddings for all interventions using sentence-transformers."""
+    try:
+        from sentence_transformers import SentenceTransformer
+    except ImportError:
+        print("Warning: sentence-transformers not installed. Skipping embedding generation.")
+        print("Install with: pip install sentence-transformers")
+        return
+
+    print("Loading embedding model...")
+    model = SentenceTransformer('all-MiniLM-L6-v2')
+
+    embeddings = {}
+    texts = []
+    filenames = []
+
+    for item in interventions:
+        # Combine title + problem + approach for embedding
+        text_parts = [item['title']]
+        if item.get('problem'):
+            text_parts.append(item['problem'])
+        if item.get('approach'):
+            text_parts.append(item['approach'])
+        text = ' '.join(text_parts)
+        texts.append(text)
+        filenames.append(item['filename'])
+
+    print(f"Generating embeddings for {len(texts)} projects...")
+    vectors = model.encode(texts, show_progress_bar=True)
+
+    for filename, vector in zip(filenames, vectors):
+        embeddings[filename] = vector.tolist()
+
+    output = {
+        'model': 'Xenova/all-MiniLM-L6-v2',
+        'dimensions': 384,
+        'generated': datetime.utcnow().isoformat() + 'Z',
+        'embeddings': embeddings
+    }
+
+    with open(EMBEDDINGS_FILE, 'w') as f:
+        json.dump(output, f)
+
+    print(f"Generated {len(embeddings)} embeddings to {EMBEDDINGS_FILE}")
+
+
 def main():
     if not SOURCE_DIR.exists():
         print(f"Source directory not found: {SOURCE_DIR}")
@@ -155,6 +204,9 @@ def main():
         json.dump(interventions, f, indent=2)
 
     print(f"Generated {len(interventions)} projects to {OUTPUT_FILE}")
+
+    # Generate embeddings for semantic search
+    generate_embeddings(interventions)
 
 
 if __name__ == '__main__':

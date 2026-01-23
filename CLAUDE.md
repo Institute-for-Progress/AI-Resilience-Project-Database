@@ -19,6 +19,7 @@ To update the website with new/modified projects:
 
 ```bash
 # 1. Run the generator script (from ListofListofLists directory)
+# This updates both projects-v2.json AND embeddings.json
 python3 generate_from_resilience.py
 
 # 2. Test locally
@@ -26,21 +27,28 @@ python3 -m http.server 8001
 # Open http://localhost:8001
 
 # 3. Commit and push
-git add data/projects-v2.json
+git add data/projects-v2.json data/embeddings.json
 git commit -m "Update projects from resilience-proposals"
 git push
 ```
 
-**Important:** Do NOT edit `data/projects-v2.json` directly - it is generated from the markdown files.
+**Important:** Do NOT edit `data/projects-v2.json` or `data/embeddings.json` directly - they are generated.
+
+**Embedding generation requires:**
+```bash
+pip install sentence-transformers
+```
+If not installed, the script will still generate projects-v2.json but skip embeddings.
 
 ## Architecture
 
 ```
 data/
   projects-v2.json       # Generated from resilience-proposals (do not edit directly)
+  embeddings.json        # Generated embeddings for semantic search (do not edit directly)
   sources.json           # Source metadata (manually curated)
 index.html               # Single-page web UI (vanilla JS, no build step)
-generate_from_resilience.py  # Parser: resilience-proposals markdown → JSON
+generate_from_resilience.py  # Parser: resilience-proposals markdown → JSON + embeddings
 sources/                 # Peregrine and other source extractions (linked from projects)
 ```
 
@@ -86,7 +94,8 @@ Each markdown file follows this structure:
 
 ## Website Features
 
-- Search by title/content
+- Search by title/content (lexical)
+- Semantic search toggle (uses transformers.js + pre-computed embeddings)
 - Filter by category (Science/Security/Society)
 - Filter by stage (Research/Implementation/Coordination/Pilot/Idea)
 - Modal with full details: Problem, Approach, Current State, Uncertainties, Next Steps, Sources

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Safety Projects Database</title>
+    <title>AI Resilience Project Database</title>
     <link rel="icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -34,6 +34,20 @@
         .nav-links a:hover,
         .nav-links a.active {
             color: #1f2937;
+        }
+        .submit-idea-btn {
+            margin-left: auto;
+            padding: 8px 16px;
+            background: #1f2937;
+            color: white;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+        .submit-idea-btn:hover {
+            background: #374151;
         }
         nav {
             display: flex;
@@ -118,6 +132,34 @@
         .filter-select:focus {
             outline: none;
             border-color: #9ca3af;
+        }
+
+        /* Semantic toggle */
+        .semantic-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: .875rem;
+            color: #6b7280;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        .semantic-toggle input {
+            cursor: pointer;
+        }
+        .semantic-toggle:hover {
+            color: #1f2937;
+        }
+        .semantic-loading {
+            font-size: .75rem;
+            color: #9ca3af;
+            font-style: italic;
+        }
+        .similarity-score {
+            font-size: .7rem;
+            color: #9ca3af;
+            margin-left: 8px;
         }
 
         /* Results row */
@@ -232,7 +274,6 @@
         .tag-science { background: #EDE9FE; color: #7C3AED; }
         .tag-security { background: #FEE2E2; color: #DC2626; }
         .tag-society { background: #D1FAE5; color: #059669; }
-        .tag-policy { background: #FEF3C7; color: #D97706; }
 
         /* Stage tag colors */
         .stage-tag {
@@ -477,16 +518,14 @@
                 <img alt="Logo" src="static/media/RGB_IFP_Short_Rich Black.2fc337967068a2211ed2.png">
             </a>
         </div>
+        <a href="mailto:jonah@ifp.org?subject=AI%20Resilience%20Database%20-%20Idea%20Submission&body=Hi%2C%0A%0AI%27d%20like%20to%20suggest%20adding%20the%20following%20source%20or%20idea%3A%0A%0ASource%2FLink%3A%20%0A%0ADescription%3A%20%0A%0AThanks!" class="submit-idea-btn">Submit an Idea</a>
     </nav>
 
     <div class="container">
         <header>
-            <h1 class="page-title">AI Safety Projects Database</h1>
-            <p><i>A research compilation project</i></p>
+            <h1 class="page-title">AI Resilience Project Database</h1>
             <p class="description">
-                This database catalogs project areas for AI safety, biosecurity, and societal resilience.
-                The projects are compiled from published research, policy proposals, and expert recommendations.
-                Click on a recommendation to learn more about it.
+                What do we need to build to prepare for a future with advanced AI? There are many takes on this question. This database is a merged list of all the ones we could easily find, each describing a specific project, the problem it aims to solve, and what needs to be done. We don't endorse all these ideas, but we built this as a useful tool to understand the landscape of what's been proposed—and see the gaps more clearly.
             </p>
         </header>
 
@@ -504,12 +543,16 @@
                     </svg>
                     <input type="text" class="search-input" placeholder="Search" id="search">
                 </div>
+                <label class="semantic-toggle">
+                    <input type="checkbox" id="semantic-toggle" checked>
+                    <span>Semantic</span>
+                    <span class="semantic-loading" id="semantic-status"></span>
+                </label>
                 <select class="filter-select" id="category-filter">
                     <option value="all">All Categories</option>
                     <option value="Science">Science</option>
                     <option value="Security">Security</option>
                     <option value="Society">Society</option>
-                    <option value="Policy">Policy</option>
                 </select>
                 <select class="filter-select" id="status-filter">
                     <option value="all">All Stages</option>
@@ -587,7 +630,7 @@
     </div>
 
     <footer>
-        <p>AI Safety Projects Database</p>
+        <p>AI Resilience Project Database</p>
     </footer>
 
     <!-- Modal -->
@@ -597,6 +640,7 @@
                 <div>
                     <div class="modal-title" id="modal-title"></div>
                     <span class="tag" id="modal-tag"></span>
+                    <span class="stage-tag" id="modal-stage" style="margin-left: 8px;"></span>
                 </div>
                 <button class="modal-close" id="modal-close">&times;</button>
             </div>
@@ -607,46 +651,122 @@
     <script>
         let projects = [];
         let sources = [];
+        let embeddings = {};
+        let pipeline = null;
+        let embeddingModel = null;
+        let semanticEnabled = true;
 
         async function loadData() {
             try {
-                const [intRes, srcRes] = await Promise.all([
+                const [intRes, srcRes, embRes] = await Promise.all([
                     fetch('data/projects-v2.json?v=' + Date.now()),
-                    fetch('data/sources.json')
+                    fetch('data/sources.json'),
+                    fetch('data/embeddings.json?v=' + Date.now()).catch(() => null)
                 ]);
                 projects = await intRes.json();
                 sources = await srcRes.json();
+                if (embRes && embRes.ok) {
+                    const embData = await embRes.json();
+                    embeddings = embData.embeddings || {};
+                    console.log(`Loaded ${Object.keys(embeddings).length} embeddings`);
+                }
                 renderProjects('all', 'all', '');
                 renderSources();
+                // Pre-load transformers.js since semantic is on by default
+                loadTransformers();
             } catch (e) {
                 console.error('Failed to load data:', e);
                 document.getElementById('projects-list').innerHTML = '<div style="padding: 40px; text-align: center; color: #6b7280;">Failed to load data. Please try again.</div>';
             }
         }
 
-        function renderProjects(filter = 'all', statusFilter = 'all', search = '') {
+        async function loadTransformers() {
+            if (pipeline) return;
+            const statusEl = document.getElementById('semantic-status');
+            statusEl.textContent = 'Loading AI model...';
+            try {
+                const { pipeline: createPipeline } = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2');
+                pipeline = createPipeline;
+                embeddingModel = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
+                statusEl.textContent = '';
+                console.log('Transformers.js loaded');
+            } catch (e) {
+                console.error('Failed to load transformers.js:', e);
+                statusEl.textContent = 'Failed to load';
+                document.getElementById('semantic-toggle').checked = false;
+                semanticEnabled = false;
+            }
+        }
+
+        async function embedQuery(text) {
+            if (!embeddingModel) return null;
+            const output = await embeddingModel(text, { pooling: 'mean', normalize: true });
+            return Array.from(output.data);
+        }
+
+        function cosineSimilarity(a, b) {
+            if (!a || !b || a.length !== b.length) return 0;
+            let dot = 0, normA = 0, normB = 0;
+            for (let i = 0; i < a.length; i++) {
+                dot += a[i] * b[i];
+                normA += a[i] * a[i];
+                normB += b[i] * b[i];
+            }
+            return dot / (Math.sqrt(normA) * Math.sqrt(normB));
+        }
+
+        async function renderProjects(filter = 'all', statusFilter = 'all', search = '', queryVector = null) {
             const container = document.getElementById('projects-list');
-            const filtered = projects.filter(i => {
+
+            // Apply category and status filters first
+            let filtered = projects.filter(i => {
                 const matchesFilter = filter === 'all' || i.tag === filter;
                 const matchesStatus = statusFilter === 'all' ||
                     (i.status && i.status.toLowerCase().includes(statusFilter.toLowerCase()));
-                const searchText = (i.problem || i.whatItIs || '').toLowerCase();
-                const matchesSearch = !search ||
-                    i.title.toLowerCase().includes(search.toLowerCase()) ||
-                    searchText.includes(search.toLowerCase());
-                return matchesFilter && matchesStatus && matchesSearch;
+                return matchesFilter && matchesStatus;
             });
 
-            document.getElementById('count').textContent = `${filtered.length} recommendations`;
+            let projectsWithScores = [];
 
-            container.innerHTML = filtered.map(i => {
+            if (semanticEnabled && search && queryVector) {
+                // Semantic search: score by similarity
+                for (const item of filtered) {
+                    const projEmbedding = embeddings[item.filename];
+                    if (projEmbedding) {
+                        const score = cosineSimilarity(queryVector, projEmbedding);
+                        if (score >= 0.3) {
+                            projectsWithScores.push({ ...item, similarity: score });
+                        }
+                    }
+                }
+                // Sort by similarity descending
+                projectsWithScores.sort((a, b) => b.similarity - a.similarity);
+            } else if (search) {
+                // Lexical search
+                const searchLower = search.toLowerCase();
+                filtered = filtered.filter(i => {
+                    const searchText = (i.problem || i.whatItIs || '').toLowerCase();
+                    return i.title.toLowerCase().includes(searchLower) ||
+                        searchText.includes(searchLower);
+                });
+                projectsWithScores = filtered.map(i => ({ ...i, similarity: null }));
+            } else {
+                projectsWithScores = filtered.map(i => ({ ...i, similarity: null }));
+            }
+
+            document.getElementById('count').textContent = `${projectsWithScores.length} recommendations`;
+
+            container.innerHTML = projectsWithScores.map(i => {
                 const sourceCount = i.sources ? i.sources.length : 0;
                 const summary = i.problem || i.whatItIs || '';
                 const stageClass = getStageClass(i.status);
                 const stageLabel = getStageLabel(i.status);
+                const similarityBadge = i.similarity !== null
+                    ? `<span class="similarity-score">${Math.round(i.similarity * 100)}% match</span>`
+                    : '';
                 return `
                 <div class="table-row" data-filename="${i.filename}">
-                    <div class="col col-project">${i.title}</div>
+                    <div class="col col-project">${i.title}${similarityBadge}</div>
                     <div class="col col-org">
                         <span class="tag tag-${i.tag.toLowerCase()}">${i.tag}</span>
                     </div>
@@ -799,6 +919,12 @@
             tagEl.textContent = item.tag;
             tagEl.className = `tag tag-${item.tag.toLowerCase()}`;
 
+            const stageEl = document.getElementById('modal-stage');
+            const stageClass = getStageClass(item.status);
+            const stageLabel = getStageLabel(item.status);
+            stageEl.textContent = stageLabel;
+            stageEl.className = `stage-tag ${stageClass}`;
+
             let bodyHtml = '';
 
             // Problem section (or whatItIs for backwards compatibility)
@@ -925,28 +1051,41 @@
             });
         });
 
-        document.getElementById('category-filter').addEventListener('change', (e) => {
-            renderProjects(
-                e.target.value,
-                document.getElementById('status-filter').value,
-                document.getElementById('search').value
-            );
-        });
+        async function triggerSearch() {
+            const search = document.getElementById('search').value;
+            const filter = document.getElementById('category-filter').value;
+            const statusFilter = document.getElementById('status-filter').value;
 
-        document.getElementById('status-filter').addEventListener('change', (e) => {
-            renderProjects(
-                document.getElementById('category-filter').value,
-                e.target.value,
-                document.getElementById('search').value
-            );
-        });
+            let queryVector = null;
+            if (semanticEnabled && search) {
+                document.getElementById('semantic-status').textContent = 'Searching...';
+                queryVector = await embedQuery(search);
+                document.getElementById('semantic-status').textContent = '';
+            }
 
+            await renderProjects(filter, statusFilter, search, queryVector);
+        }
+
+        document.getElementById('category-filter').addEventListener('change', triggerSearch);
+        document.getElementById('status-filter').addEventListener('change', triggerSearch);
+
+        let searchDebounce = null;
         document.getElementById('search').addEventListener('input', (e) => {
-            renderProjects(
-                document.getElementById('category-filter').value,
-                document.getElementById('status-filter').value,
-                e.target.value
-            );
+            clearTimeout(searchDebounce);
+            searchDebounce = setTimeout(triggerSearch, semanticEnabled ? 300 : 100);
+        });
+
+        document.getElementById('semantic-toggle').addEventListener('change', async (e) => {
+            semanticEnabled = e.target.checked;
+            if (semanticEnabled) {
+                await loadTransformers();
+                if (!pipeline) {
+                    semanticEnabled = false;
+                    e.target.checked = false;
+                    return;
+                }
+            }
+            triggerSearch();
         });
 
         document.getElementById('source-search').addEventListener('input', (e) => {
