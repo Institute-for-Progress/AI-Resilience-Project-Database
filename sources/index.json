@@ -7,7 +7,9 @@
       "type": "md",
       "status": "processed",
       "folder": "carlsmith-alignment/",
-      "notes": "9 essays. Primary source for Rogue AI category refinement: rogue vs misuse distinction, hand-off framing, option control vs motivation control, global vulnerability conditions."
+      "notes": "9 essays. Primary source for Rogue AI category refinement: rogue vs misuse distinction, hand-off framing, option control vs motivation control, global vulnerability conditions.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "carlsmith-otherness",
@@ -16,7 +18,9 @@
       "type": "pdf",
       "status": "processed",
       "folder": "otherness-agi/",
-      "notes": "192 pages. Philosophy of human-AI relations. Deep atheism, yin/yang, gentleness toward AI as 'other', liberalism/boundaries, attunement. Challenges pure control framing."
+      "notes": "192 pages. Philosophy of human-AI relations. Deep atheism, yin/yang, gentleness toward AI as 'other', liberalism/boundaries, attunement. Challenges pure control framing.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "nielsen-wise-optimist",
@@ -25,7 +29,9 @@
       "type": "md",
       "status": "processed",
       "folder": "nielsen-wise-optimist/",
-      "notes": "Wise optimism: accepts xrisk, works to overcome it. Armageddon vs Kumbaya heuristics, market vs non-market safety, coceleration, hyper-entities."
+      "notes": "Wise optimism: accepts xrisk, works to overcome it. Armageddon vs Kumbaya heuristics, market vs non-market safety, coceleration, hyper-entities.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "macaskill-better-futures",
@@ -34,7 +40,9 @@
       "type": "md",
       "status": "processed",
       "folder": "macaskill-better-futures/",
-      "notes": "6 essays. Primary source for Flourishing category: S×F framework, multiplicative model, path dependence, convergence skepticism."
+      "notes": "6 essays. Primary source for Flourishing category: S×F framework, multiplicative model, path dependence, convergence skepticism.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "peregrine-2025",
@@ -43,7 +51,9 @@
       "type": "pdf",
       "status": "processed",
       "folder": "peregrine-2025/",
-      "notes": "208 proposals extracted, converted to problem/intervention entries via tiling tree method"
+      "notes": "208 proposals extracted, converted to problem/intervention entries via tiling tree method",
+      "intervention_extraction": "in_progress",
+      "visibility": "public"
     },
     {
       "id": "cltr-defacc-uk",
@@ -51,7 +61,9 @@
       "type": "xlsx",
       "status": "processed",
       "folder": "cltr-defacc-uk/",
-      "notes": "29 UK-centric interventions. Mostly UK-specific policy/systems. ~5 map to existing entries, ~5 could become new generalizable interventions."
+      "notes": "29 UK-centric interventions. Mostly UK-specific policy/systems. ~5 map to existing entries, ~5 could become new generalizable interventions.",
+      "intervention_extraction": "todo",
+      "visibility": "private"
     },
     {
       "id": "convergent-gap-map",
@@ -60,7 +72,9 @@
       "type": "web",
       "status": "processed",
       "folder": "convergent-gap-map/",
-      "notes": "101 R&D gaps across 17 fields. WARNING: Most not relevant (astrophysics, space, ecology). Filter for: AI safety, biosecurity, global health."
+      "notes": "101 R&D gaps across 17 fields. WARNING: Most not relevant (astrophysics, space, ecology). Filter for: AI safety, biosecurity, global health.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "mit-risk-repository",
@@ -69,7 +83,9 @@
       "type": "xlsx",
       "status": "processed",
       "folder": "mit-risk-repository/",
-      "notes": "Used for taxonomy stress-test. 7 domains, 23 sub-categories. Confirms coverage, no critical gaps. Hyperwar potentially underspecified."
+      "notes": "Used for taxonomy stress-test. 7 domains, 23 sub-categories. Confirms coverage, no critical gaps. Hyperwar potentially underspecified.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "epistemic-security",
@@ -77,16 +93,20 @@
       "type": "md",
       "status": "processed",
       "folder": "epistemic-security/",
-      "notes": "Already a tiling tree! Source integrity → content integrity → distribution governance → coordination infrastructure. Could become a problem entry directly."
+      "notes": "Already a tiling tree! Source integrity → content integrity → distribution governance → coordination infrastructure. Could become a problem entry directly.",
+      "intervention_extraction": "todo",
+      "visibility": "private"
     },
     {
       "id": "project-grasp",
       "name": "Project GRASP (CeSIA)",
       "url": "https://centre-securite-ia.notion.site/safe-online",
       "type": "notion",
-      "status": "pending",
+      "status": "processed",
       "folder": "project-grasp/",
-      "notes": "French AI Safety Center database. Requires JS/manual export - WebFetch won't work."
+      "notes": "French AI Safety Center taxonomy. All 41 solutions already covered by existing entries. Template extractions deleted.",
+      "intervention_extraction": "done",
+      "visibility": "public"
     },
     {
       "id": "openagent-ecosystem",
@@ -95,7 +115,9 @@
       "type": "pdf",
       "status": "processed",
       "folder": "openagent-ecosystem/",
-      "notes": "Schmidt Sciences report on AI agent security."
+      "notes": "Schmidt Sciences report on AI agent security.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "bowman-checklist",
@@ -104,7 +126,9 @@
       "type": "web",
       "status": "processed",
       "folder": "bowman-checklist/",
-      "notes": "25 goals across 3 chapters. Most map to existing 4 problems. Anthropic-specific framing (ASL levels, RSP). No new problems identified."
+      "notes": "25 goals across 3 chapters. Most map to existing 4 problems. Anthropic-specific framing (ASL levels, RSP). No new problems identified.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "biosecurity-lists",
@@ -113,7 +137,9 @@
       "type": "web",
       "status": "processed",
       "folder": "biosecurity-lists/",
-      "notes": "Meta-list processed. 4 high-priority sub-lists added as separate sources. Most consensus projects already covered."
+      "notes": "Meta-list processed. 4 high-priority sub-lists added as separate sources. Most consensus projects already covered.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "concrete-biosecurity-ea",
@@ -122,7 +148,9 @@
       "type": "web",
       "status": "processed",
       "folder": "concrete-biosecurity-ea/",
-      "notes": "6 biosecurity projects. Most map to terrorism/extinction (detection, countermeasures, refuges). BWC Strengthening maps to proliferation. Gap: no proposals address AI-bio intersection."
+      "notes": "6 biosecurity projects. Most map to terrorism/extinction (detection, countermeasures, refuges). BWC Strengthening maps to proliferation. Gap: no proposals address AI-bio intersection.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "apollo-biodefense",
@@ -131,7 +159,9 @@
       "type": "pdf",
       "status": "processed",
       "folder": "apollo-biodefense/",
-      "notes": "4 goals: detection, testing, treatment, vaccines—all by 2030. All map to terrorism/extinction. $10B/year. Traditional biosecurity (no AI-bio focus). PDF has more tech detail."
+      "notes": "4 goals: detection, testing, treatment, vaccines—all by 2030. All map to terrorism/extinction. $10B/year. Traditional biosecurity (no AI-bio focus). PDF has more tech detail.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "gcbr-technologies",
@@ -140,7 +170,9 @@
       "type": "pdf",
       "status": "blocked",
       "folder": "gcbr-technologies/",
-      "notes": "Site returns 403. Manual PDF download required. Expected: tech inventory for terrorism/extinction interventions."
+      "notes": "Site returns 403. Manual PDF download required. Expected: tech inventory for terrorism/extinction interventions.",
+      "intervention_extraction": "blocked",
+      "visibility": "public"
     },
     {
       "id": "biosecurity-engineers",
@@ -149,15 +181,20 @@
       "type": "web",
       "status": "processed",
       "folder": "biosecurity-engineers/",
-      "notes": "7 hardware interventions: PPE, Far-UVC, ventilation, UVGI, lab safety, biomonitoring, vehicle filtration. All terrorism/extinction except lab safety (proliferation). Engineering skill-gap framing."
+      "notes": "7 hardware interventions: PPE, Far-UVC, ventilation, UVGI, lab safety, biomonitoring, vehicle filtration. All terrorism/extinction except lab safety (proliferation). Engineering skill-gap framing.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "atlas-ai-resilience",
       "name": "Atlas AI Resilience Gap Map",
+      "url": "https://docs.google.com/spreadsheets/d/1QAdfr71KOM0w5ZsU_8OxLG1q1mDUlJQJBK9UB0WTeT8/edit?gid=0#gid=0",
       "type": "xlsx",
       "status": "processed",
       "folder": "atlas-ai-resilience/",
-      "notes": "119 gaps in main sheet. Check 'Related lists' tab for more sources."
+      "notes": "119 gaps in main sheet. Check 'Related lists' tab for more sources.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "atlas-cyber",
@@ -166,7 +203,9 @@
       "type": "xlsx",
       "status": "processed",
       "folder": "atlas-cyber/",
-      "notes": "23 fundable cybersecurity projects. Convergent Research willing to house efforts."
+      "notes": "23 fundable cybersecurity projects. Convergent Research willing to house efforts.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "ai-safety-lists",
@@ -175,7 +214,9 @@
       "type": "web",
       "status": "processed",
       "folder": "ai-safety-lists/",
-      "notes": "Meta-list processed. 3 high-priority sub-lists added. Heavy overlap with existing taxonomy."
+      "notes": "Meta-list processed. 3 high-priority sub-lists added. Heavy overlap with existing taxonomy.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "evals-100-projects",
@@ -184,7 +225,9 @@
       "type": "web",
       "status": "processed",
       "folder": "evals-100-projects/",
-      "notes": "100+ projects across scheming, autonomy, AI R&D, control, bio/cyber/persuasion, multi-agent. Maps to detect-evaluation-sandbagging, safety-benchmark-development, end-to-end-harm-assessment. Strong overlap with existing entries."
+      "notes": "100+ projects across scheming, autonomy, AI R&D, control, bio/cyber/persuasion, multi-agent. Maps to detect-evaluation-sandbagging, safety-benchmark-development, end-to-end-harm-assessment. Strong overlap with existing entries.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "redwood-control-proposals",
@@ -193,7 +236,9 @@
       "type": "web",
       "status": "processed",
       "folder": "redwood-control-proposals/",
-      "notes": "36 proposals, 10 tractable directions. Strong mapping to contain-unsafe-ai, multi-agent-threat-monitoring, detect-evaluation-sandbagging. 3 potential sub-interventions: synthetic honeypots, collusion prevention, elicitation without learning."
+      "notes": "36 proposals, 10 tractable directions. Strong mapping to contain-unsafe-ai, multi-agent-threat-monitoring, detect-evaluation-sandbagging. 3 potential sub-interventions: synthetic honeypots, collusion prevention, elicitation without learning.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "hazell-ten-projects",
@@ -202,7 +247,9 @@
       "type": "web",
       "status": "processed",
       "folder": "hazell-ten-projects/",
-      "notes": "Funder perspective on fundable org ideas. 6 map to existing interventions, 4 new candidates (comms, lit reviews, resilience plan, econ tracker)."
+      "notes": "Funder perspective on fundable org ideas. 6 map to existing interventions, 4 new candidates (comms, lit reviews, resilience plan, econ tracker).",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "vitalik-dacc",
@@ -211,7 +258,9 @@
       "type": "md",
       "status": "processed",
       "folder": "vitalik-dacc/",
-      "notes": "3 essays. d/acc (defensive/decentralization/differential acceleration). Offense/defense balance, four domains (macro, bio, cyber, info). Defense-favoring worlds enable better governance. Balvi bio-defense work."
+      "notes": "3 essays. d/acc (defensive/decentralization/differential acceleration). Offense/defense balance, four domains (macro, bio, cyber, info). Defense-favoring worlds enable better governance. Balvi bio-defense work.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "toner-dynamism",
@@ -220,7 +269,9 @@
       "type": "md",
       "status": "processed",
       "folder": "toner-dynamism/",
-      "notes": "4 essays. Dynamism vs stasis (Virginia Postrel), stasist tendencies in AI safety, alignment as steerability, concentration-of-power risks, dynamist rules. Former OpenAI board member."
+      "notes": "4 essays. Dynamism vs stasis (Virginia Postrel), stasist tendencies in AI safety, alignment as steerability, concentration-of-power risks, dynamist rules. Former OpenAI board member.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     },
     {
       "id": "ai-futures-project",
@@ -229,7 +280,9 @@
       "type": "md",
       "status": "processed",
       "folder": "ai-futures-project/",
-      "notes": "12 files. Daniel Kokotajlo (ex-OpenAI), Eli Lifland, Scott Alexander. AI 2027 scenarios, short timelines (modal 2027), fast takeoff, CEO takeover pathways, multi-AI conflict, Plans A/B/C/D framework, policy priorities. Key insight: threats are entangled, even 'good' scenarios involve massive power concentration."
+      "notes": "12 files. Daniel Kokotajlo (ex-OpenAI), Eli Lifland, Scott Alexander. AI 2027 scenarios, short timelines (modal 2027), fast takeoff, CEO takeover pathways, multi-AI conflict, Plans A/B/C/D framework, policy priorities. Key insight: threats are entangled, even 'good' scenarios involve massive power concentration.",
+      "intervention_extraction": "todo",
+      "visibility": "public"
     }
   ]
 }

@@ -657,16 +657,26 @@
         let pipeline = null;
         let embeddingModel = null;
         let semanticEnabled = true;
+        let privateSourceIds = new Set();
+        let privateSourceUrls = new Set();
 
         async function loadData() {
             try {
                 const [intRes, srcRes, embRes] = await Promise.all([
                     fetch('data/projects-v2.json?v=' + Date.now()),
-                    fetch('data/sources.json'),
+                    fetch('sources/index.json?v=' + Date.now()),
                     fetch('data/embeddings.json?v=' + Date.now()).catch(() => null)
                 ]);
                 projects = await intRes.json();
-                sources = await srcRes.json();
+                const srcData = await srcRes.json();
+                sources = srcData.sources || srcData; // Handle wrapped or unwrapped format
+                // Build sets of private source identifiers
+                sources.forEach(s => {
+                    if (s.visibility === 'private') {
+                        if (s.id) privateSourceIds.add(s.id);
+                        if (s.url) privateSourceUrls.add(s.url);
+                    }
+                });
                 if (embRes && embRes.ok) {
                     const embData = await embRes.json();
                     embeddings = embData.embeddings || {};
@@ -793,24 +803,31 @@
         function renderSources(search = '') {
             const container = document.getElementById('sources-grid');
             const filtered = sources.filter(s => {
+                // Hide private sources
+                if (s.visibility === 'private') return false;
+                const title = s.title || s.name || '';
+                const desc = s.description || s.notes || '';
                 return !search ||
-                    s.title.toLowerCase().includes(search.toLowerCase()) ||
-                    (s.description && s.description.toLowerCase().includes(search.toLowerCase()));
+                    title.toLowerCase().includes(search.toLowerCase()) ||
+                    desc.toLowerCase().includes(search.toLowerCase());
             });
 
             document.getElementById('source-count').textContent = `${filtered.length} sources`;
 
-            container.innerHTML = filtered.map(s => `
+            container.innerHTML = filtered.map(s => {
+                const title = s.title || s.name || 'Untitled';
+                const desc = s.description || s.notes || 'No description available.';
+                return `
                 <div class="source-card">
-                    <h3>${s.title}</h3>
+                    <h3>${title}</h3>
                     <div class="source-meta">
                         ${s.status ? `<span>${s.status}</span>` : ''}
                         ${s.proposalCount ? ` · ${s.proposalCount} proposals` : ''}
                     </div>
-                    <p class="card-preview">${s.description || 'No description available.'}</p>
+                    <p class="card-preview">${desc}</p>
                     ${s.url ? `<a href="${s.url}" target="_blank" class="source-link">View source →</a>` : ''}
                 </div>
-            `).join('');
+            `}).join('');
         }
 
         function getStageClass(status) {
@@ -1004,7 +1021,10 @@
                     <div class="modal-section">
                         <h3>Sources (${item.sources.length})</h3>
                         <ul>${item.sources.map(s => {
-                            if (s.url && s.url.startsWith('http')) {
+                            // Check if this source is private (hide link but show text)
+                            const isPrivate = (s.url && privateSourceUrls.has(s.url)) ||
+                                              (s.sourceId && privateSourceIds.has(s.sourceId));
+                            if (s.url && s.url.startsWith('http') && !isPrivate) {
                                 return `<li><a href="${s.url}" target="_blank">${s.text}</a></li>`;
                             }
                             return `<li>${s.text}</li>`;
