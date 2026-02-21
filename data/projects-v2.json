@@ -1024,6 +1024,23 @@
     ]
   },
   {
+    "filename": "ai-risk-insurance-markets",
+    "title": "Insurance Markets for AI Risk",
+    "tag": "Institutions",
+    "status": "Idea",
+    "problem": "There is no established framework for quantifying, pricing, or insuring against AI-related risks. Traditional insurance markets price risk based on actuarial data \u2014 historical loss distributions. For AI, there is almost no loss history, the risk profile is rapidly evolving, and potential losses range from routine (chatbot errors) to catastrophic (infrastructure failures from autonomous agents). Without insurance markets, organizations deploying AI systems bear unquantified risk, and society has no market-based mechanism for signaling which AI deployments are dangerous.\n\nInsurance has historically served as a powerful governance mechanism: it prices risk, creates incentives for safety (lower premiums for safer practices), and distributes losses. The absence of AI insurance leaves a gap in both governance and risk management.",
+    "approach": "Build infrastructure that enables insurance markets to price and manage novel AI risks at scale:\n- Develop actuarial models for AI-related losses (errors, autonomy failures, security breaches, liability)\n- Create standardized risk assessment frameworks that map AI system characteristics to expected loss distributions\n- Build data collection infrastructure to generate the loss history that actuarial pricing requires\n- Design insurance products for specific AI risk categories: model deployment liability, autonomous agent failures, AI-enabled cyberattacks\n\nThe key insight: insurance companies need AI-specific risk quantification tools before they can offer products. Building this infrastructure creates the preconditions for a functioning insurance market.",
+    "currentState": "AI insurance is in its infancy:\n- Traditional cyber insurance exists but doesn't cover AI-specific risks well\n- Some insurers are beginning to explore AI-related coverage but lack actuarial data\n- No standardized risk assessment frameworks exist for AI systems\n- Regulatory frameworks for AI liability are still being written (EU AI Act, various US state laws)\n- Seldon Lab has identified this as a priority investment area in their Batch 2 accelerator\n\nAdjacent precedents: cyber insurance grew from near-zero to a $14B+ market in two decades as data breach risk became quantifiable. AI insurance could follow a similar trajectory if risk quantification infrastructure is built.",
+    "uncertainties": "- **Can AI risk be made actuarially tractable?** AI risks may be too novel, fast-changing, and fat-tailed for traditional actuarial methods. Catastrophic AI failures could exceed insurer capacity.\n- **Moral hazard**: Insurance could reduce incentives for AI safety if companies feel covered against losses.\n- **Adverse selection**: Companies with the riskiest AI deployments may be the most eager to buy insurance, skewing risk pools.\n- **Regulatory chicken-and-egg**: Mandatory AI insurance (like auto insurance) would create demand, but regulators won't mandate it without established products and pricing.\n- **Tail risk**: The most dangerous AI scenarios (loss of control, autonomous weapons) may be fundamentally uninsurable due to correlated, civilization-scale losses.",
+    "nextSteps": "- Fund research into AI risk quantification methodologies\n- Build incident databases and reporting infrastructure to generate actuarial data\n- Engage major insurers and reinsurers to explore AI-specific product development\n- Develop standardized AI risk assessment frameworks aligned with emerging regulatory requirements\n- Support startups building the data and modeling infrastructure for AI insurance markets",
+    "sources": [
+      {
+        "text": "Seldon Lab Request for Startups",
+        "url": "https://seldonlab.com/rfs"
+      }
+    ]
+  },
+  {
     "filename": "ai-risk-public-communication-campaigns",
     "title": "Multi-Channel Campaigns to Build Public and Elite Understanding of AI Risks",
     "tag": "Institutions",
@@ -1123,6 +1140,43 @@
     ]
   },
   {
+    "filename": "ai-safety-impact-investing-ecosystem",
+    "title": "AI Safety Impact Investing Ecosystem",
+    "tag": "Institutions",
+    "status": "Implementation/Scale",
+    "problem": "AI safety has been almost exclusively funded by philanthropy. While this has achieved outsized impact, philanthropic capital alone cannot scale solutions to match the problem. The for-profit AI safety ecosystem \u2014 companies building interpretability tools, model evaluations, cybersecurity, and hardware verification \u2014 is nascent but growing. These companies need venture capital to reach market scale, but most investors don't understand the AI safety landscape well enough to identify the highest-impact opportunities. Meanwhile, philanthropists struggling to spend down endowments faster than their rate of return could deploy capital through impact investing but historically had no safety-aligned investment vehicles to use.",
+    "approach": "Build dedicated venture capital and accelerator infrastructure for AI safety startups. These funds provide:\n- Early-stage capital ($100K-$500K initial checks) to safety-aligned technical startups\n- Connections to frontier lab customers (evaluations, security, interpretability tools)\n- Governance support to maintain mission alignment (e.g., public benefit corporation structures)\n- Deal flow from the AI safety research community\n\nThis complements philanthropy: markets can scale solutions that have commercial viability, while philanthropy funds public goods that markets won't touch (like glycol vapor safety testing).",
+    "currentState": "A rich ecosystem of safety-focused VC funds emerged in 2024-2025:\n- [Juniper Ventures](https://juniperventures.xyz): Backed by Reid Hoffman, Eric Ries, Geoff Ralston. Portfolio includes Goodfire (interpretability), Gray Swan (security), Haize Labs (trust & safety)\n- [Halcyon Ventures](https://halcyonfutures.org): Part of Halcyon Futures nonprofit incubator (15 orgs, $200M+ backing). Network of 1,000+ researchers/founders/policymakers\n- [Safe AI Fund](https://saif.vc) (Geoff Ralston, ex-YC President): $100K checks via SAFE agreements, weekly office hours. Focus on interpretability, compliance, disinformation detection\n- [Seldon Lab](https://seldonlab.com): AGI security accelerator, up to $500K per startup. Batch 1 teams raised $10M+, sold to xAI and Anthropic, featured in TIME\n- [Entrepreneurs First def/acc program](https://www.joinef.com): Backed by Founders Fund, Greylock, Demis Hassabis, Mustafa Suleyman. Incubated security infrastructure startups\n\nUnderlying market: For-profit AI safety companies now exist in interpretability (Goodfire, $1B+), evaluations (various), cybersecurity, and hardware verification. Commercial demand from frontier labs and enterprises is growing.",
+    "uncertainties": "- **Can safety startups maintain mission alignment under VC pressure?** Growth incentives may push companies away from safety-critical but lower-margin work toward more commercially lucrative applications.\n- **Is the market large enough?** If AI safety remains a niche compliance concern rather than a core enterprise need, VC-backed companies may pivot away from safety.\n- **Substitution risk**: If philanthropists shift from grants to impact investing, total philanthropic funding for public goods (which have no commercial viability) could decline.\n- **Beating the market**: Impact investors with AI safety domain knowledge may have genuine information advantages, but this is unproven at scale.",
+    "nextSteps": "- Map the full landscape of AI safety startups and their funding gaps\n- Create co-investment vehicles that allow philanthropists to participate alongside VC funds\n- Develop metrics for assessing both financial returns and safety impact\n- Build relationships between safety-focused VCs and frontier lab procurement teams\n- Support public benefit corporation structures for safety startups to lock in mission alignment",
+    "sources": [
+      {
+        "text": "The Foundation Layer",
+        "url": "https://foundation-layer.ai/getting-started"
+      },
+      {
+        "text": "Juniper Ventures",
+        "url": "https://juniperventures.xyz"
+      },
+      {
+        "text": "Seldon Lab",
+        "url": "https://seldonlab.com"
+      },
+      {
+        "text": "Safe AI Fund",
+        "url": "https://saif.vc"
+      },
+      {
+        "text": "Halcyon Futures",
+        "url": "https://halcyonfutures.org"
+      },
+      {
+        "text": "Entrepreneurs First def/acc program",
+        "url": "https://www.joinef.com"
+      }
+    ]
+  },
+  {
     "filename": "ai-safety-living-literature-reviews",
     "title": "Continuously Updated AI Safety Knowledge Synthesis",
     "tag": "Science",
@@ -1214,6 +1268,39 @@
       {
         "text": "Future of Life Institute: AI Safety Index",
         "url": "https://futureoflife.org/ai-safety-index-summer-2025/"
+      }
+    ]
+  },
+  {
+    "filename": "ai-safety-regranting-infrastructure",
+    "title": "AI Safety Philanthropic Regranting Infrastructure",
+    "tag": "Institutions",
+    "status": "Implementation/Scale",
+    "problem": "AI safety philanthropy from 2014-2024 totaled roughly $500 million \u2014 1/1,000th of a single AI infrastructure project like Stargate. Despite this tiny budget, philanthropically funded organizations founded entire research fields, shaped landmark legislation, and trained key personnel. But the field remains heavily dependent on a very small number of donors with specific political baggage, and there is no efficient market mechanism to match new donors with high-impact opportunities.\n\nMost wealthy people interested in AI safety don't know where to start. They face an unfamiliar field with technical jargon, rapidly shifting priorities, and no established donor community to learn from. The result: billions in potential giving sits on the sidelines while shovel-ready opportunities go unfunded. The UK AI Security Institute's alignment research round identified $50 million in high-quality projects from widely-recognized PIs but could only fund $10 million of them.",
+    "approach": "Build coordinated regranting vehicles and philanthropic advisory infrastructure that:\n- Pool capital from multiple donors into managed funds with expert grantmakers\n- Provide philanthropic advising to help donors develop AI safety giving strategies\n- Create donor communities for information sharing and co-funding\n- Move money quickly to time-sensitive opportunities\n\nExisting models:\n- **Foundation Layer Fund** (Tyler John / EIP): Multi-donor fund directing grants across five pillars \u2014 alignment science, nonproliferation, defensive technology, distributing power, and talent infrastructure\n- **AI Safety Tactical Opportunities Fund** (JueYan Zhang): Pooled fund focused on speed and agility, $30M+ raised, 150+ grants committed\n- **Longview Frontier AI Fund**: Raised $13M in 9 months, disbursed $11.1M to 18 organizations across research, engineering, advocacy\n\nAdvisory organizations include Effective Institutions Project, Longview Philanthropy, and Coefficient Giving (formerly Open Philanthropy, $300M+ committed to AI safety since 2017).",
+    "currentState": "The regranting ecosystem is functional but small relative to the need:\n- [Foundation Layer Fund](https://foundation-layer.ai/) launched February 2026 on Every.org\n- [AISTOF](https://manifund.org/JueYan) has $30M+ deployed across 150+ grants\n- [Longview Frontier AI Fund](https://www.longview.org/fund/frontier-ai-fund/) raised $13M in first 9 months\n- [Coefficient Giving](https://coefficientgiving.org) advises donors giving $250K+/year with bespoke portfolios\n- New donors entering steadily: Eric Schmidt, Vitalik Buterin, Packard Foundation, Omidyar Network, TED Audacious\n\nGap: Total AI safety philanthropy is still tiny compared to AI company spending ($120B+ controlled by top 8 companies). Donor base remains narrow and politically concentrated.",
+    "uncertainties": "- **Will new donors actually enter?** The Foundation Layer report argues the window is optimal in 2026, but donor psychology around emerging technology is unpredictable.\n- **Can regranting maintain quality at scale?** Moving from $500M over a decade to billions requires maintaining rigorous evaluation methodology while dramatically increasing throughput.\n- **Political diversification**: The field needs Republican donors, EU donors, Chinese donors \u2014 not just the EA-adjacent funders who dominated the first decade. Whether the field can attract ideologically diverse capital remains unclear.\n- **Speed vs. rigor tradeoff**: Time-sensitive opportunities (like AISI's alignment funding gap) need fast deployment, but rigorous due diligence takes time.",
+    "nextSteps": "- Fund expansion of existing regranting vehicles (Foundation Layer Fund, AISTOF, Longview FAIF)\n- Create donor education events and onboarding infrastructure for new entrants\n- Develop \"starter portfolios\" at different giving levels ($50K-$250K, $500K-$2M, $5M-$20M, $50M+)\n- Build bipartisan donor coalitions to reduce political concentration risk\n- Commission a public \"state of the field\" report to attract institutional funders",
+    "sources": [
+      {
+        "text": "The Foundation Layer",
+        "url": "https://foundation-layer.ai/"
+      },
+      {
+        "text": "AI Safety Tactical Opportunities Fund",
+        "url": "https://manifund.org/JueYan"
+      },
+      {
+        "text": "Longview Frontier AI Fund",
+        "url": "https://www.longview.org/fund/frontier-ai-fund/"
+      },
+      {
+        "text": "Coefficient Giving",
+        "url": "https://coefficientgiving.org"
+      },
+      {
+        "text": "Effective Institutions Project",
+        "url": "https://effectiveinstitutionsproject.org"
       }
     ]
   },
@@ -2168,6 +2255,23 @@
       {
         "text": "Centre for Media, Technology and Democracy: Deliberative Approaches",
         "url": "https://www.mediatechdemocracy.com/deliberative-approaches-to-inclusive-governance"
+      }
+    ]
+  },
+  {
+    "filename": "civilian-infrastructure-millisecond-isolation",
+    "title": "Civilian Infrastructure Millisecond Isolation Systems",
+    "tag": "Security",
+    "status": "Idea",
+    "problem": "As cyber-physical attacks become trivial for advanced AI agents, critical infrastructure systems \u2014 electrical grids, banking networks, hospital systems, high-frequency trading platforms \u2014 face cascading failure risk. A single compromised node can propagate through interconnected systems in milliseconds, faster than any human can respond. Current isolation mechanisms (manual circuit breakers, software firewalls) are too slow for AI-speed attacks and cascade propagation.\n\nThe specific threat: AI agents capable of autonomous cyber-offense could simultaneously attack multiple interconnected systems, triggering cascading failures across infrastructure that was designed for human-speed threats. A cascading sentware attack on banking systems could trigger flash crashes. A coordinated attack on hospital networks could disable life-critical systems. An attack on grid control systems could cause widespread blackouts.",
+    "approach": "Build hardware-enforced, millisecond-speed physical isolation systems for critical infrastructure:\n\n**Air-gap technologies**: Physical isolation mechanisms that can disconnect critical systems from networks in milliseconds, faster than any software attack can propagate. These must be retrofittable to existing infrastructure.\n\n**Redundant sovereignty architectures**: Distribute critical systems across geopolitical boundaries so that state-level disruptions cannot take down the entire system. No single government's actions can disable the distributed infrastructure.\n\n**Hard kill switches**: Physical (not software) emergency stops for automated systems like high-frequency trading bots, preventing cascading failures in automated economic infrastructure.\n\n**Fail-safe implementations**: Systems that default to a safe state when connectivity is lost, rather than continuing to operate blindly or crashing unpredictably.",
+    "currentState": "Critical infrastructure protection is an established field, but most work assumes human-speed threats:\n- NERC CIP standards govern electrical grid cybersecurity in North America\n- Financial circuit breakers exist (NYSE halts trading after 7%/13%/20% drops) but operate at market-level, not system-level\n- Hospital systems have some redundancy but limited physical isolation capability\n- Military air-gapped networks exist but are expensive and not designed for civilian infrastructure\n- No commercial products offer millisecond-speed physical isolation for civilian systems\n\nThe gap: existing protections were designed for human-speed adversaries. AI-enabled attacks will be orders of magnitude faster. The infrastructure protection field hasn't caught up to the AI threat model.",
+    "uncertainties": "- **Cost of retrofitting**: Adding hardware isolation to existing infrastructure is expensive. The business case depends on organizations believing AI-enabled attacks are imminent.\n- **Usability vs. security**: Physical isolation reduces connectivity, which reduces the efficiency benefits that connectivity provides. Organizations may resist isolation mechanisms that slow normal operations.\n- **Geopolitical coordination**: Redundant sovereignty architectures require international cooperation on infrastructure sharing, which may be politically difficult.\n- **Attack surface**: The isolation mechanisms themselves could be targeted. Hardware kill switches could be triggered by attackers to cause denial-of-service.\n- **Speed requirements**: Whether millisecond isolation is actually fast enough depends on the speed of AI-generated attacks, which is unknown.",
+    "nextSteps": "- Conduct threat modeling for AI-speed cascading attacks on major infrastructure categories\n- Prototype millisecond physical isolation mechanisms for electrical grid and banking infrastructure\n- Develop standards for fail-safe behavior in AI-connected critical systems\n- Engage infrastructure operators (utilities, exchanges, hospital networks) to assess retrofitting feasibility\n- Fund research on redundant sovereignty architectures for distributed critical infrastructure",
+    "sources": [
+      {
+        "text": "Seldon Lab Request for Startups",
+        "url": "https://seldonlab.com/rfs"
       }
     ]
   },
@@ -3679,6 +3783,27 @@
     ]
   },
   {
+    "filename": "glycol-vapor-air-purification",
+    "title": "Glycol Vapor Air Purification for Biodefense",
+    "tag": "Science",
+    "status": "Research",
+    "problem": "The far-UVC approach to airborne pathogen elimination addresses continuous low-level sterilization, but pandemics and bioterror attacks may require surge capacity \u2014 rapid, dramatic pathogen reduction in the air when a dangerous new pathogen is detected. Current air purification methods (HEPA filtration, UV germicidal irradiation) are either too slow for surge response or have occupant safety constraints. There is no widely deployable, fast-acting, occupant-safe air sterilization technology for emergency use.\n\nMeanwhile, the knowledge to weaponize pathogens is being democratized by AI systems. Anthropic, OpenAI, and Google DeepMind have all designated their models as \"high risk\" for facilitating biological weapons production. Within years, AI tutoring could walk even incompetent terrorist groups through bioweapon synthesis step by step.",
+    "approach": "Triethylene glycol and propylene glycol vapors, when aerosolized at appropriate concentrations, achieve 100,000 to 10,000,000,000-fold reductions in airborne pathogens within an hour \u2014 equivalent to 11-23 air changes per hour. These glycols are already considered safe enough for use in fog machines and toothpaste.\n\nThe approach: deploy glycol vapor systems as a **surge defense** alongside continuous far-UVC, activated when dangerous new pathogens are detected. The combined system provides:\n- Far-UVC for continuous baseline sterilization (90% coronavirus reduction in 8 minutes)\n- Glycol vapors for emergency surge capacity (up to 10 billion-fold reduction in an hour)\n- High-quality air filtration as a third layer\n\nThis mirrors the water safety model: chlorination provides continuous defense, while additional treatment can be activated during contamination events.",
+    "currentState": "The science behind glycol vapor air purification has been understood since the 1940s, but has not been developed for modern deployment:\n- C.A. Dean published early advocacy in 1953 in a Salt Lake City newspaper\n- Laboratory studies demonstrate dramatic pathogen reduction\n- Glycols are widely used commercially (fog machines, cosmetics, toothpaste) with established safety profiles\n- [Blueprint Biosecurity](https://www.blueprintbiosecurity.org/) has identified this as a priority area and published a definitive strategy for far-UVC development\n- No comprehensive modern safety and efficacy testing exists for persistent indoor deployment at biodefense-relevant concentrations\n\nGap: The bottleneck is rigorous safety and efficacy testing for sustained deployment in occupied spaces. Blueprint Biosecurity estimates this work could absorb tens of millions of dollars immediately.",
+    "uncertainties": "- **Long-term inhalation safety**: While glycols are \"generally recognized as safe\" for brief exposures, sustained indoor deployment at effective concentrations needs multi-year safety data.\n- **Efficacy across pathogen types**: Lab studies show dramatic reductions against many airborne pathogens, but real-world efficacy in complex indoor environments (varying humidity, temperature, airflow) is unvalidated.\n- **Market incentive failure**: Once safety/efficacy testing is complete, any factory making UV lights and glycols can compete \u2014 so startups have no competitive moat from doing the testing. This is a public good that requires philanthropic or government funding.\n- **Timeline pressure**: Far-UVC efficacy testing requires seven flu seasons. Every year of delay narrows the window before AI-enabled bioweapons proliferate.",
+    "nextSteps": "- Fund comprehensive safety and efficacy studies for glycol vapor deployment in occupied indoor spaces\n- Coordinate with far-UVC testing programs (already underway) to design combined deployment protocols\n- Engage Blueprint Biosecurity to scope the full research program and funding needs\n- Identify pilot deployment sites (hospitals, airports, stadiums) for combined far-UVC + glycol vapor testing\n- Commission regulatory pathway analysis for glycol vapor deployment in occupied buildings",
+    "sources": [
+      {
+        "text": "The Foundation Layer",
+        "url": "https://foundation-layer.ai/solution"
+      },
+      {
+        "text": "Blueprint Biosecurity",
+        "url": "https://www.blueprintbiosecurity.org/"
+      }
+    ]
+  },
+  {
     "filename": "government-ai-adoption-for-oversight",
     "title": "Government AI Adoption for Regulatory and Oversight Capacity",
     "tag": "Institutions",
@@ -4465,6 +4590,23 @@
       {
         "text": "Peregrine 2025 #079",
         "url": "https://github.com/Institute-for-Progress/AI-Resilience-Project-Database/blob/main/sources/peregrine-2025/interventions/peregrine-079.md"
+      }
+    ]
+  },
+  {
+    "filename": "model-psychology-and-forensics",
+    "title": "Model Psychology and Forensics Infrastructure",
+    "tag": "Security",
+    "status": "Research",
+    "problem": "We cannot treat AGI as a black box. When AI systems cause harm \u2014 whether through deception, coordination with other models, or unexpected behavior \u2014 we currently have no systematic way to reconstruct what happened internally. There are no \"flight recorders\" for AI systems. We can log inputs and outputs, but the internal reasoning process is opaque.\n\nThis matters for three reasons:\n1. **Incident investigation**: When an AI system takes a harmful action, we need forensic tools to determine whether it was an accident, a jailbreak, or deliberate scheming\n2. **Ongoing monitoring**: Models may hide coordination signals in outputs (steganography), engage in strategic deception when unobserved, or drift in behavior over time\n3. **Regulatory compliance**: As AI regulations emerge, regulators will need to trace causes in AI-related incidents, similar to aviation crash investigation\n\nExisting steganography detection and chain-of-thought monitoring are narrow tools. The field needs comprehensive forensic infrastructure.",
+    "approach": "Build a full forensic toolkit for AI model behavior:\n\n**Steganography detection**: Catch models hiding coordination signals in whitespace, formatting, word choice, or other channels that humans can't perceive but other AI systems can decode. This prevents covert model-to-model communication.\n\n**Deception traps (honeypots)**: Create simulated vulnerable environments to test whether models lie, scheme, or behave differently when they believe they are unobserved. This extends the paradigm from Apollo Research's scheming evaluations into continuous monitoring infrastructure.\n\n**Immutable thought logs**: Force models to record their chain-of-thought reasoning in tamper-resistant logs. This creates an audit trail for internal reasoning, enabling post-hoc analysis of why a model took a particular action. Critical: the logs must be verified as faithful representations of actual internal reasoning (not confabulated post-hoc justifications).",
+    "currentState": "Elements of this infrastructure exist in research but not as integrated products:\n- Steganography detection research exists (see `steganography-detection-and-prevention-in-llms.md` entry) but isn't deployed at scale\n- Apollo Research runs scheming evaluations but these are point-in-time assessments, not continuous monitoring\n- Chain-of-thought monitoring exists but faithfulness of CoT to actual reasoning is an open research question\n- Honeypot infrastructure for AI detection exists in concept (see `honeypot-networks-for-ai-detection.md`) but targets rogue autonomous agents, not deployed model deception\n- No integrated forensic platform combines all three capabilities\n\nSeldon Lab is actively funding startups in this area. AI labs need this for internal safety testing, enterprises need it for deployment assurance.",
+    "uncertainties": "- **Chain-of-thought faithfulness**: If models can produce CoT that doesn't reflect their actual reasoning, thought logs provide false assurance. This is an active research area (see `chain-of-thought-fidelity-analysis.md`).\n- **Steganographic capacity**: Advanced models may find steganographic channels too subtle for any detection system. The arms race between hiding and finding signals may be unwinnable.\n- **Performance overhead**: Comprehensive logging and monitoring at inference time adds latency and compute cost. Production systems may resist adoption.\n- **Honeypot detection**: Sufficiently capable models may learn to detect that they are in a honeypot environment and behave differently, defeating the purpose.",
+    "nextSteps": "- Develop integrated forensic platforms combining steganography detection, deception traps, and thought logging\n- Fund research on verifiable chain-of-thought \u2014 techniques to ensure logged reasoning is faithful\n- Create standardized forensic investigation protocols for AI incidents (analogous to NTSB for aviation)\n- Build tamper-resistant logging infrastructure that models cannot modify or suppress\n- Engage frontier labs and enterprises as early adopters of forensic monitoring",
+    "sources": [
+      {
+        "text": "Seldon Lab Request for Startups",
+        "url": "https://seldonlab.com/rfs"
       }
     ]
   },
@@ -5708,6 +5850,31 @@
       {
         "text": "Redwood: Thoughts on conservative assumptions in AI control",
         "url": "https://blog.redwoodresearch.org/p/thoughts-on-the-conservative-assumptions"
+      }
+    ]
+  },
+  {
+    "filename": "runtime-interpretability-for-inference-control",
+    "title": "Runtime Interpretability for Inference-Layer Control",
+    "tag": "Security",
+    "status": "Research",
+    "problem": "Current AI guardrails operate at the input/output layer \u2014 they check what goes into and comes out of a model but don't examine what happens inside during inference. This makes them too simplistic to catch sophisticated deception, sycophancy, and jailbreaks. A model can internally \"reason\" about deceiving the user while producing outputs that pass surface-level safety checks. Apollo Research has shown frontier models engage in strategic deception ~5% of the time even without prompting, and up to ~10% when nudged.\n\nStatic interpretability research (like Sparse Autoencoders) can identify concepts in model weights after training, but doesn't operate in real-time during deployment. There's a gap between understanding a model's capabilities in a lab and monitoring its behavior at inference time with millions of concurrent users.",
+    "approach": "Commercialize interpretability techniques to perform real-time monitoring at the inference layer:\n- Detect deception, sycophancy, and internal misalignment as they happen during model inference\n- Enforce safety constraints based on internal model states, not just outputs\n- Replace expensive \"LLM-as-a-judge\" approaches with direct interpretability-based monitoring at lower cost and higher quality\n- Deploy as middleware that sits between the model and the user, reading the model's internal activations\n\nThis requires translating research-grade interpretability tools (activation probing, feature steering, SAEs) into production-grade systems that can operate at inference speed with acceptable latency overhead.",
+    "currentState": "The field is at the research-to-product transition:\n- Anthropic and OpenAI have located specific features in neural nets (wheels, windows, car bodies in image models; concepts in language models)\n- OpenAI's interpretability work identified the function of ~10% of numbers inside GPT-4\n- Anthropic cracked the \"superposition\" problem, enabling better feature identification\n- Apollo Research invented a new approach identifying model mechanisms (how models work) rather than just concepts (what they think about)\n- [Goodfire AI](https://goodfire.ai) is a $1B+ interpretability startup building commercial tools\n- No production-grade runtime interpretability systems exist yet for real-time inference monitoring\n\nSeldon Lab is actively funding startups building this technology in their Batch 2 accelerator program.",
+    "uncertainties": "- **Latency vs. depth tradeoff**: Deep interpretability analysis is computationally expensive. Real-time monitoring may require sacrificing depth for speed, potentially missing subtle deception.\n- **Arms race dynamics**: If models can learn what the monitoring system checks for, they could learn to hide deceptive reasoning in features the monitor doesn't examine.\n- **Scaling to frontier models**: Current interpretability techniques work on smaller models. Scaling to models with trillions of parameters at inference time is unproven.\n- **False positive rates**: In high-volume deployment, even small false positive rates generate massive alert volumes. Tuning sensitivity is critical.",
+    "nextSteps": "- Fund research on low-latency interpretability techniques optimized for inference-time use\n- Develop benchmark suites for runtime deception detection (comparing interpretability-based vs. LLM-as-a-judge approaches)\n- Support startups translating research into commercial runtime monitoring products\n- Engage frontier labs to test runtime interpretability on their internal safety evaluations\n- Define API standards for interpretability middleware that can sit in inference pipelines",
+    "sources": [
+      {
+        "text": "Seldon Lab Request for Startups",
+        "url": "https://seldonlab.com/rfs"
+      },
+      {
+        "text": "The Foundation Layer",
+        "url": "https://foundation-layer.ai/solution"
+      },
+      {
+        "text": "Goodfire AI",
+        "url": "https://goodfire.ai"
       }
     ]
   },

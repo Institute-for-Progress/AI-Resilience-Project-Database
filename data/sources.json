@@ -243,5 +243,36 @@
     "authors": ["UK AI Security Institute"],
     "proposalCount": 4,
     "status": "processed"
+  },
+  {
+    "id": "foundation-layer",
+    "title": "The Foundation Layer: A Philanthropic Strategy for the AGI Transition",
+    "description": "Comprehensive philanthropic strategy report for the AGI transition by Tyler John. Covers alignment science, nonproliferation, defensive technology (especially biodefense via far-UVC and glycol vapors), distributing power, and talent infrastructure. Argues 2026 is an exceptional window for philanthropic intervention. Includes detailed track record of AI safety philanthropy and resources for donors.",
+    "url": "https://foundation-layer.ai/",
+    "type": "Strategy report",
+    "authors": ["Tyler John"],
+    "proposalCount": 3,
+    "status": "processed",
+    "mappings": [
+      {"proposal": "Philanthropic coordination", "intervention": "ai-safety-regranting-infrastructure"},
+      {"proposal": "Glycol vapor biodefense", "intervention": "glycol-vapor-air-purification"},
+      {"proposal": "Impact investing ecosystem", "intervention": "ai-safety-impact-investing-ecosystem"}
+    ]
+  },
+  {
+    "id": "seldon-lab-rfs",
+    "title": "Seldon Lab: Request for Startups Batch 02",
+    "description": "AGI security accelerator's second batch call for startups. Investing up to $500K per startup in 5-10 companies building infrastructure for AGI safety. Ten technology areas: formal verification RL environments, compute hardware controls, runtime interpretability, civilian infrastructure protection, agentic system assurance, supply chain oversight, AI insurance, model psychology/forensics, agent coordination protocols, and human identity defense.",
+    "url": "https://seldonlab.com/rfs",
+    "type": "Accelerator RFS",
+    "authors": ["Seldon Lab"],
+    "proposalCount": 4,
+    "status": "processed",
+    "mappings": [
+      {"proposal": "Runtime interpretability", "intervention": "runtime-interpretability-for-inference-control"},
+      {"proposal": "Insurance for AI", "intervention": "ai-risk-insurance-markets"},
+      {"proposal": "Model psychology & forensics", "intervention": "model-psychology-and-forensics"},
+      {"proposal": "Civilian infrastructure protection", "intervention": "civilian-infrastructure-millisecond-isolation"}
+    ]
   }
 ]
